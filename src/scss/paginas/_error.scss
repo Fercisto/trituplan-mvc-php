@@ -1,0 +1,34 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.pagina_404 {
+
+    @include m.contenedor;
+
+    text-align: center;
+    @include m.tablet {
+        text-align: left;
+    }
+
+    &__heading {
+        font-size: 5rem;
+        color: v.$azul;
+    }
+
+    &__titulo {
+        font-size: 3.8rem;
+        font-weight: v.$bold;
+    }
+
+    &__texto {
+        font-size: 3rem;
+    }
+
+    &__enlace {
+        @include m.boton(v.$azul, v.$blanco);
+        @include m.tablet {
+            width: auto;
+        }
+    }
+
+}

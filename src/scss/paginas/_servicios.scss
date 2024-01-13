@@ -1,0 +1,73 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.servicios {
+
+    @include m.contenedor;
+    text-align: center;
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @include m.desktop {
+        @include m.grid(3, 2rem);
+        place-items: center;
+    }
+
+    &__card {
+        box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
+        background-color: v.$blanco;
+        width: 330px;
+        height: 450px;
+        padding: 3rem;
+        border-radius: 5px;
+        border-bottom: 8px solid v.$azul;
+        margin-bottom: 3rem;
+
+        @include m.galaxy-fold {
+            width: 220px;  
+            height: 550px; 
+        }
+
+        @include m.ipad-pro {
+            width: 270px;
+        }
+    }
+
+    &__icono {
+        position: relative;
+        margin: auto;
+        font-size: 30px;
+        height: 2.5em;
+        width: 2.5em;
+        border-radius: 50%;
+        padding: 2rem;
+        display: grid;
+        place-items: center;
+        background-color: v.$azul;
+        border-radius: 50%;
+        height: auto;
+        color: v.$blanco;
+    }
+
+    &__heading {
+        font-size: 3rem;
+        font-weight: v.$bold;
+
+        @include m.galaxy-fold {
+            font-size: 2.2rem;
+        }
+    }
+
+    &__texto {
+        line-height: 1.6;
+        font-size: 2rem;
+
+        @include m.galaxy-fold {
+            font-size: 1.8rem;
+        }
+    }
+
+}

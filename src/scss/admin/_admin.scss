@@ -1,0 +1,158 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.admin {
+
+    @include m.contenedor;
+
+    &__mensajes {
+        padding: 1rem;
+
+        &--empty {
+            text-align: center;
+            color: v.$negro;
+            font-size: 2.2rem;
+            margin: 2rem 0 2rem 0;
+        }
+
+        &--heading {
+            margin: 1rem 0 2rem 0;
+            font-size: 2.6rem;
+        }
+
+        &--contenido {
+            background-color: v.$gris-claro;
+            border-radius: 1rem;
+            padding: 2rem 2rem 1rem 2rem;
+            margin-bottom: 2rem;
+
+            &-flex {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .trash {
+                    color: v.$rojo;
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        &--boton {
+
+            all: unset;
+            &:hover {
+                cursor: pointer;
+            }
+
+        }
+
+        &--linea {
+            border-bottom: .5px solid v.$gris;
+            width: 100%;
+            margin: 1rem 0 1rem 0;
+        }
+
+        &--azul {
+            color: v.$azul;
+        }
+
+        &--fecha {
+            color: v.$negro;
+            font-size: 1.5rem;
+            font-weight: v.$bold;
+        }
+
+        &--bold {
+            font-weight: v.$bold;
+        }
+
+    }
+
+    &__enlace {
+        @include m.boton(v.$azul, v.$blanco);
+        width: auto;
+    }
+
+    &__tabla {
+        margin-top: 2rem;
+        width: 100%;
+        border-spacing: 0;
+
+        thead {
+            background-color: v.$gris;
+
+            th {
+                color: v.$blanco;
+                padding: 2rem;
+            }
+        }
+
+        tr {
+            &:nth-of-type(odd):not(thead tr) {
+                background-color: v.$gris-claro;
+            }
+        }
+
+        &--imagen {
+            width: 10rem;
+            height: 8rem;
+        }
+
+        &--descripcion {
+            max-width: 100px; 
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        @include m.telefono {
+            &--descripcion,
+            &--destino,
+            &--img {
+                display: none;
+            }
+        }
+
+        td {
+            text-align: center;
+        }
+        
+        &--enlace {
+
+            margin: 1rem 0 1rem 0;
+
+            &-actualizar {
+                @include m.boton(v.$amarillo, v.$blanco);
+            }
+
+            &-eliminar {
+                @include m.boton(v.$rojo, v.$blanco);
+            }
+        }
+
+        &--encabezado {
+            &-mobile {
+                @include m.telefono {
+                    display: none;
+                }
+            }
+        }
+
+    }
+
+    &-crud {
+
+        @include m.contenedor-md;
+
+        &__heading {
+            font-size: 4rem;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+    }
+
+}

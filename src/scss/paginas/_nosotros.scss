@@ -1,0 +1,32 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.nosotros {
+
+    @include m.contenedor-md;
+    margin-top: 5rem;
+
+    @include m.telefono {
+        padding: 0 2rem 0 2rem;
+    }
+
+    &__contenido {
+
+        @include m.tablet {
+            @include m.grid(2, 4rem);
+        }
+    }
+
+    &__titulo {
+        margin: 1rem 0;
+        color: v.$negro;
+        font-weight: v.$bold;
+    }
+
+    &__descripcion {
+        font-size: 2rem;
+        line-height: 1.6;
+        color: v.$gris-oscuro;
+    }
+
+}

@@ -1,0 +1,15 @@
+@use 'base/mixins' as m;
+
+.auth {
+    @include m.contenedor-sm;
+    padding: 0 3rem 0 3rem;
+
+    @include m.tablet {
+        padding: 0;
+    }
+}
+.auth__texto {
+    font-size: 2rem;
+    width: 100%;
+}
+

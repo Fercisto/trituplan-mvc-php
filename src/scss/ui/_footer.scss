@@ -1,0 +1,135 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.footer {
+
+    background-color: v.$gris;
+    height: auto;
+    padding: 3rem;
+    margin-top: 8rem;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+
+    @include m.telefono {
+        display: grid;
+        place-content: center;
+        place-items: center;
+    }
+
+    &__contenido {   
+        
+        @include m.contenedor;
+        padding: 1rem 3rem 1rem 3rem;
+
+        @include m.desktop {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    &__seccion {
+        max-width: 350px;
+
+        &--heading {
+            display: inline-block;
+        }
+    }
+
+    &__logo {
+        @include m.texto-fluido(2rem, 4rem);
+        color: v.$blanco;
+        font-weight: v.$bold;
+        font-size: 4rem;
+        text-transform: uppercase;
+        &--azul {
+            color: v.$azul;
+        }
+
+        @include m.galaxy-fold {
+            font-size: 2.5rem;
+        }
+    }
+
+    &__linea {
+        border-bottom: 1px solid v.$azul;
+        width: 50%;
+        margin: 1rem 0 1rem 0;
+    }
+
+    &__texto {
+        color: v.$blanco;
+        font-size: 1.8rem;
+        line-height: 1.6;
+        @include m.texto-fluido(1.3rem, 2rem);
+
+        @include m.galaxy-fold {
+            font-size: 1.5rem;   
+        }
+    }
+
+    &__heading {
+        color: v.$blanco;
+        font-size: 2rem;
+        font-weight: v.$bold;
+    }
+
+    &__lista {
+        @include m.reset-lista;
+        margin-bottom: 3rem;
+
+        @include m.galaxy-fold {
+            font-size: 1.3rem;
+        }
+
+        @include m.ipad-pro {
+            font-size: 1.5rem;
+        }
+
+        &--li {
+            margin-bottom: 1.2rem;
+
+            i {
+                color: v.$azul;
+            }
+
+            
+            &-nav {
+                @include m.tablet {
+                    margin-right: 2rem;
+                }
+            }
+        }
+
+    }
+
+    &__enlace {
+        color: v.$blanco;
+        transition-property: color;
+        transition-duration: .3s;
+
+        &:hover {
+            color: v.$azul;
+        }
+
+        &--actual {
+            color: v.$azul;
+        }
+
+    }
+
+    &__contacto {
+        color: v.$blanco;
+    }
+
+    &__copyright {
+        margin-top: 3rem;
+        text-align: center;
+        color: v.$blanco;
+
+        @include m.galaxy-fold {
+            font-size: 1rem;   
+        }
+    }
+}
+

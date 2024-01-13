@@ -1,0 +1,102 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.ayuda {
+
+    @include m.contenedor;
+
+    @include m.telefono {
+        display: grid;
+        place-content: center;
+        place-items: center;
+    }
+
+    height: auto;
+    padding: 0 8rem;  
+
+    &__heading {
+        font-size: 4.5rem;
+        font-weight: v.$bold;
+        margin: 4rem 2rem 2rem 2rem;
+        text-align: center;
+
+        @include m.tablet {
+            text-align: left;
+        }
+    }
+
+    &__campo {
+
+        padding: 1rem 3rem 1rem 3rem;
+
+        &--visible {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem 0 2rem;
+        }
+
+        &--invisible {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.5s linear, opacity 0.5s linear;
+        }
+
+    }
+    
+    &__pregunta {
+        font-size: 3rem;
+        font-weight: v.$bold;
+        margin: 2rem 0 2rem 0;
+    }
+
+    &__linea {
+        border-bottom: .5px solid lighten(v.$gris, 50%);
+        width: 100%;
+    }
+
+    &__respuesta {
+        margin-top: 1.5rem;
+        line-height: 1.5;
+        font-size: 2.2rem;
+    }
+
+    &__boton {
+        all: unset;
+        
+        i {
+            color: v.$azul;
+            font-size: 2rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__enlace {
+        color: v.$azul;
+        transition: color .3s;
+
+        &:hover {
+            color: darken(v.$azul, 15%);
+        }
+    }
+
+}
+
+.mostrar {
+    opacity: 1;
+    height: auto;
+}
+
+.rotado {
+    transform: rotate(180deg);
+    transition: transform 0.5s ease;
+}
+
+.color-cambiado {
+    color: v.$azul;
+    transition: color 0.3s ease-in;
+}

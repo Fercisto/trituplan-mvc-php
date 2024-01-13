@@ -1,0 +1,145 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.home {
+
+    @include m.contenedor;
+    padding: 0 5rem 0 5rem;
+
+
+    &__heading {
+        margin: 5rem 0 2rem 0;
+        text-align: center;
+        font-size: 3.8rem;
+
+        @include m.tablet {
+            text-align: left;
+            font-size: 4rem;
+        }
+
+    }
+
+    &__nosotros {
+
+        text-align: center;
+        margin-top: 4rem;
+
+        @include m.tablet {
+            @include m.grid(3, 3.5rem);
+        }
+
+
+        i {
+            color: v.$azul;
+            font-size: 5rem;
+        }
+
+        h3 {
+            font-weight: v.$regular;
+            font-size: 3.8rem;
+            margin: 1rem;
+
+            @include m.tablet {
+                font-size: 4rem;
+            }
+        }
+
+        p {
+            line-height: 1.5;
+            font-weight: v.$delgada;
+            font-size: 1.8rem;
+        }
+    }
+
+    &__proyectos {
+        @include m.tablet {
+            @include m.grid(4, 2rem);
+        }
+    }
+
+    &__enlaces {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__enlace {
+        @include m.boton(v.$azul, v.$blanco);
+        width: 100%;
+        text-align: center;
+
+        @include m.tablet {
+            width: auto;
+        }
+    }
+
+    &__servicio {
+
+        @include m.contenedor-md;
+        margin-top: 4rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @include m.tablet {
+            align-items: start;
+            @include m.grid(2, 1rem);
+            text-align: left;
+        }
+
+        &--imagen {
+            &-size {
+
+                @include m.telefono {
+                    width: 280px;
+                }
+
+                @include m.galaxy-fold {
+                    width: 200px;
+                }
+
+                width: 330px;
+            }
+        }
+
+        &--descripcion {
+
+            h3 {
+
+                @include m.telefono {
+                    margin-top: 2rem;
+                }
+                
+                margin: .5rem 0 1rem 0;
+                font-size: 3.8rem;
+
+                @include m.tablet {
+                    font-size: 4rem;
+                }
+            }
+
+            p {
+                color: v.$gris;
+                line-height: 1.6;
+                font-size: 2rem;
+
+                a {
+                    color: v.$azul;
+                    transition: color .3s;
+
+                    &:hover {
+                        color: darken( v.$azul, 15% ); 
+                    }
+                }
+            }
+
+        }
+
+        &--enlace {
+            @include m.boton(v.$azul, v.$blanco);
+            width: 100%;
+        }
+    }
+
+}

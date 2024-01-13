@@ -1,0 +1,117 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.header{ 
+
+    background-color: v.$gris;
+    width: 100%;
+    height: auto;
+
+    
+    &__navegacion {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 2.5rem 5.5rem 2.5rem 5.5rem;
+
+        @include m.desktop {
+            justify-content: space-between;
+            flex-direction: row;
+        } 
+          
+        &--izquierda {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &--derecha {
+
+            visibility: hidden;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.5s linear, opacity 0.5s linear;
+            
+
+            @include m.desktop {
+                display: flex;
+                align-items: center;
+                opacity: 1;
+                visibility: visible;
+                height: auto;
+            }
+        }
+
+    }
+
+    &__enlace,
+    &__form {
+        display: flex;
+        margin: 2rem;
+        justify-content: center;
+
+        @include m.desktop {
+            display: inline;
+        }
+    }
+     
+    &__enlace {
+        
+        color: v.$blanco;
+        transition-property: color;
+        transition-duration: .3s;
+
+        &--izquierda {
+            font-weight: v.$bold;
+            font-size: 4rem;
+            text-transform: uppercase;
+
+            @include m.galaxy-fold {
+                font-size: 2.5rem;
+            }
+        }
+
+        &--derecha {
+            font-size: 2rem;
+            
+            &:hover {
+                color: darken( v.$azul , 10% );
+            }
+        }
+
+        &--azul,
+        &--actual {
+            color: v.$azul;
+        }
+
+    }
+
+    &__submit {
+        @include m.boton(v.$azul, v.$blanco);
+        padding: 1rem;
+        width: auto;
+    }
+
+    &__mobile {
+
+        width: 40px;
+        @include m.galaxy-fold {
+            width: 30px;    
+        }
+
+        @include m.desktop {
+            display: none;
+        }
+    }
+
+}
+
+.mostrar {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+}

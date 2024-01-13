@@ -1,0 +1,93 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.proyectos {
+
+    @include m.contenedor;
+    max-height: 100rem;
+    padding: 2rem;
+
+    @include m.tablet {
+        padding: 0 8rem;  
+    }
+
+    &__heading {
+        font-size: 4.5rem;
+        font-weight: v.$bold;
+        margin: 4rem 2rem 0 2rem;
+
+        text-align: center;
+
+        @include m.tablet {
+            text-align: left;
+        }
+    }
+
+    &__listado {
+        height: auto;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: v.$azul;
+    }
+
+}
+
+.proyecto {
+
+    text-align: center;
+    padding: 4rem 0;
+    
+    &__card {
+        background-color: v.$gris-claro;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    &__contenido {
+        padding: 2rem;
+        display: block;
+    }
+
+    &__imagen {
+        width: 100%;
+        height: auto;
+
+        &--index {
+            height: 330px;
+            object-fit: cover;
+        }
+    }
+
+    &__heading {
+        font-size: 2.5rem;
+        margin: 0 0 2rem 0;
+        color: #353535;
+        font-weight: v.$bold;
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis;
+    }
+
+    &__enlace {
+        background-color: v.$azul;
+        color: v.$blanco;
+        padding: 4px 0 4px 0;
+        border-radius: 50px;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        display: inline-block;
+        width: 100%;
+        font-weight: v.$bold;
+        transition-property: background-color;
+        transition-duration: .3s;
+
+        &:hover {
+            background-color: darken(v.$azul, 6%);
+            cursor: pointer;
+        }
+    }
+}
+

@@ -1,0 +1,54 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.banner {
+    background-image: linear-gradient(to right, rgba(v.$negro, .8),  rgba(v.$negro, .6) ), image-set(url(../img/banner.avif) 1x, url(../img/banner.webp) 1x, url(../img/banner.jpg) 1x );
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: auto;
+    max-width: 100vw;
+    color: v.$blanco;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+
+    @include m.tablet {
+        text-align: left;
+        padding: 8rem;
+    }
+
+    &__titulo {
+
+        margin: 0;
+        font-size: 5rem;
+
+        @include m.galaxy-fold {
+            font-size: 3rem;
+        }
+    
+        @include m.tablet {
+            font-size: 7rem;
+            display: flex;
+            flex-direction: column;
+            white-space: nowrap;
+
+            span {
+                display: block;
+            }
+        }
+    }
+
+    &__ubicacion {
+        color: v.$azul;
+        font-size: 2rem;
+        margin-top: 2.5rem;
+
+        @include m.tablet {
+            font-size: 2.5rem;
+        }
+    }
+
+}

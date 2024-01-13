@@ -1,0 +1,43 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.contacto {
+    @include m.contenedor-sm;
+
+    &__heading {
+        text-align: center;
+        font-size: 4.5rem;
+        font-weight: v.$bold;
+    }
+}
+
+.formulario {
+    
+    &__heading {
+        color: v.$blanco;
+        text-align: center;
+        margin: 1rem;
+    }
+
+    &--contacto {
+        padding: 3rem;
+        background-color: v.$gris;
+        border-radius: 1rem;
+
+        label {
+            color: v.$blanco;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        input[type="email"],
+        textarea {
+            outline: none;
+            padding: 1rem;
+            border-radius: .5rem;
+        }
+    }
+
+}

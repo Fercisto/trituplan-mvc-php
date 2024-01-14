@@ -38,18 +38,6 @@
         <?php } ?>
     </div>
 
-    <?php
-            if($resultado) {
-                $mensaje = mostrarNotificacion(intval($resultado));
-                if($mensaje) { 
-            ?>
-                <p class="alerta alerta__exito"><?php echo s($mensaje);?></p>
-    <?php
-            }
-    
-        }
-    ?>
-
     <a href="admin/proyecto/crear" class="admin__enlace">Agregar Proyecto</a>
     <table class="admin__tabla">
         <thead>

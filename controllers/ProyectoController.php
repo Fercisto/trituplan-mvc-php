@@ -21,12 +21,22 @@ class ProyectoController {
 
             // Realiza un resize a la imagen con la intervetion
             if($_FILES['proyecto']['tmp_name']['imagen']) {
-                $imagen_jpg = Image::make($_FILES['proyecto']['tmp_name']['imagen'])->fit(800,900)->encode('jpg', 80);
-                $imagen_webp = Image::make($_FILES['proyecto']['tmp_name']['imagen'])->fit(800,900)->encode('webp', 80);
-                $imagen_jpg->orientate();
-                $imagen_webp->orientate();
 
-                $proyecto->setImagen($nombreImagen);
+                $tipoImagen = $_FILES['proyecto']['type']['imagen'];
+
+                // Verificar si el tipo de imagen es PNG
+                if ($tipoImagen === 'image/jpeg' || $tipoImagen === 'image/jpg') {
+                    
+                    $imagen_jpg = Image::make($_FILES['proyecto']['tmp_name']['imagen'])->fit(800,900)->encode('jpg', 80);
+                    $imagen_webp = Image::make($_FILES['proyecto']['tmp_name']['imagen'])->fit(800,900)->encode('webp', 80);
+                    $imagen_jpg->orientate();
+                    $imagen_webp->orientate();
+                    $proyecto->setImagen($nombreImagen);
+
+                } else {
+                    Proyecto::setAlerta('error', 'La imagen debe ser en formato JPG/JPEG');
+                }
+
             }
 
             $alertas = $proyecto->validar();
@@ -45,11 +55,13 @@ class ProyectoController {
                 $resultado = $proyecto->guardar();
 
                 if($resultado) {
-                    header('Location: /admin?resultado=1');
+                    header('Location: /admin');
                 }
             }
 
         } 
+
+        $alertas = Proyecto::getAlertas();
 
         $router->render('admin/proyectos/crear', [
             'titulo' => 'Administrar',
@@ -99,7 +111,7 @@ class ProyectoController {
                 $resultado = $proyecto->guardar();
 
                 if($resultado) {
-                    header('Location: /admin?resultado=2');
+                    header('Location: /admin');
                 }
     
             }
@@ -127,7 +139,7 @@ class ProyectoController {
                     $proyecto = Proyecto::find($id);
                     $resultado = $proyecto->eliminar();
                     if($resultado) {
-                        header('Location: /admin?resultado=3');
+                        header('Location: /admin');
                     }
                 }
             }

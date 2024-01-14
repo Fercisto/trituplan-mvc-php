@@ -39,7 +39,7 @@
 <div class="formulario__campo">
 
     <label for="imagen" class="formulario__label">Selecciona una imagen</label>
-    <input type="file" id="imagen" accept="image/jpeg, image/png" name="proyecto[imagen]">
+    <input type="file" id="imagen" accept="image/jpeg, image/jpg" name="proyecto[imagen]">
     <?php if($proyecto->imagen) { ?>
 
         <picture>

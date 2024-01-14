@@ -1,6 +1,6 @@
 <?php
 
-define('CARPETA_IMAGENES', $_SERVER['DOCUMENT_ROOT'] . '/imagenes/');
+define('CARPETA_IMAGENES', $_SERVER['DOCUMENT_ROOT'] . '/public/imagenes/');
 
 function debuguear($variable) : string {
     echo "<pre>";

@@ -133,49 +133,49 @@ class ActiveRecord {
 
     // Obtener todos los Registros
     public static function all($orden = 'DESC') {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id ${orden}";
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id {$orden}";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
 
     // Busca un registro por su id
     public static function find($id) {
-        $query = "SELECT * FROM " . static::$tabla  ." WHERE id = ${id}";
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE id = {$id}";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
 
     // Obtener Registros con cierta cantidad
     public static function get($limite, $orden = 'DESC') {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id ${orden} LIMIT ${limite}" ;
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id {$orden} LIMIT {$limite}" ;
         $resultado = self::consultarSQL($query);
         return $resultado ;
     }
 
     // Paginar registros
     public static function paginar($por_pagina, $offset) {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT ${por_pagina} OFFSET {$offset}" ;
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT {$por_pagina} OFFSET {$offset}" ;
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
 
     // Busqueda Where con Columna 
     public static function where($columna, $valor) {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";             
+        $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} = '{$valor}'";             
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
 
     // Retorna registros por un orden
     public static function ordenar($columna, $orden) {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY ${columna} ${orden}";
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY {$columna} {$orden}";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
 
     // Retornar por orden y con un límite
     public static function ordenarLimite($columna, $orden, $limite) {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY ${columna} ${orden} LIMIT ${limite}";
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY {$columna} {$orden} LIMIT {$limite}";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
@@ -185,9 +185,9 @@ class ActiveRecord {
         $query = "SELECT * FROM " . static::$tabla . " WHERE ";
         foreach($array as $key => $value) {
             if($key == array_key_last($array)) {
-                $query .= "${key} = '${value}' ";
+                $query .= "{$key} = '{$value}' ";
             } else {
-                $query .= "${key} = '${value}' AND ";
+                $query .= "{$key} = '{$value}' AND ";
             }
         }
         $resultado = self::consultarSQL($query);
@@ -199,7 +199,7 @@ class ActiveRecord {
         $query = "SELECT COUNT(*) FROM " . static::$tabla;
 
         if($columna) {
-            $query .= " WHERE ${columna} = ${valor}";
+            $query .= " WHERE {$columna} = {$valor}";
         }
         
         $resultado = self::$db->query($query);
@@ -213,9 +213,9 @@ class ActiveRecord {
 
         foreach($array as $key => $value) {
             if($key == array_key_last($array)) {
-                $query .= "${key} = '${value}' ";
+                $query .= "{$key} = '{$value}' ";
             } else {
-                $query .= "${key} = '${value}' AND ";
+                $query .= "{$key} = '{$value}' AND ";
             }
         }
         
@@ -232,7 +232,7 @@ class ActiveRecord {
         // Insertar en la base de datos
         $query = " INSERT INTO " . static::$tabla . " ( ";
         $query .= join(', ', array_keys($atributos));
-        $query .= " ) VALUES (' "; 
+        $query .= " ) VALUES ('"; 
         $query .= join("', '", array_values($atributos));
         $query .= " ') ";
 

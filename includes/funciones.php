@@ -1,6 +1,10 @@
 <?php
 
-define('CARPETA_IMAGENES', $_SERVER['DOCUMENT_ROOT'] . '/public/imagenes/');
+// Detectar si ya estamos en la carpeta public o no
+$carpetaPublic = str_ends_with($_SERVER['DOCUMENT_ROOT'], 'public')
+    ? $_SERVER['DOCUMENT_ROOT']
+    : $_SERVER['DOCUMENT_ROOT'] . '/public';
+define('CARPETA_IMAGENES', $carpetaPublic . '/imagenes/');
 
 function debuguear($variable) : string {
     echo "<pre>";

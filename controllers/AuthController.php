@@ -12,7 +12,8 @@ class AuthController {
         $inciado = $_SESSION['email'] ?? '';
         
         if($_SERVER['PATH_INFO'] === '/login' && $inciado) {
-            header('Location: /admin');
+            header('Location: /admin?seccion=proyectos&page=1');
+            exit();
         }
 
         $alertas = [];
@@ -34,7 +35,8 @@ class AuthController {
                         $_SESSION['id'] = $usuario->id;
                         $_SESSION['email'] = $usuario->email;
                         $_SESSION['login'] = true;
-                        header('Location: /admin');
+                        header('Location: /admin?seccion=proyectos&page=1');
+                        exit();
                     } else {
                         Usuario::setAlerta('error', 'Password Incorrecto');
                     }
@@ -58,6 +60,7 @@ class AuthController {
             session_start();
             $_SESSION = [];
             header('Location: /login');
+            exit();
         }
     }
 

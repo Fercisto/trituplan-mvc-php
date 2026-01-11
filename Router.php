@@ -23,11 +23,15 @@ class Router
         session_start();
         $auth = $_SESSION['login'] ?? null;
         $rutas_protegidas = [
-        '/admin', 
-        '/admin/proyecto/crear', 
-        '/admin/proyecto/actualizar', 
+        '/admin',
+        '/admin/proyecto/crear',
+        '/admin/proyecto/actualizar',
         '/admin/proyecto/eliminar',
-        '/admin/mensaje/eliminar'
+        '/admin/mensaje/eliminar',
+        '/admin/cotizacion/crear',
+        '/admin/cotizacion/actualizar',
+        '/admin/cotizacion/eliminar',
+        '/admin/cotizaciones/pdf'
         ];
 
         $url_actual = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
@@ -42,12 +46,14 @@ class Router
         // Proteger Rutas
         if(in_array($url_actual, $rutas_protegidas) && !$auth) {
             header('Location: /404');
+            exit();
         }
 
         if ( $fn ) {
             call_user_func($fn, $this);
         } else {
             header('Location: /404');
+            exit();
         }
     }
 

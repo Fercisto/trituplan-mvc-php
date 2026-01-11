@@ -36,7 +36,8 @@ class Paginacion {
     public function enlace_anterior() {
         $html = '';
         if($this->pagina_anterior()) {
-            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"?page={$this->pagina_anterior()}\">&laquo; Anterior</a>";
+            $url = $this->construir_url($this->pagina_anterior());
+            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"{$url}\">&laquo; Anterior</a>";
         }
         return $html;
     }
@@ -44,7 +45,8 @@ class Paginacion {
     public function enlace_siguiente() {
         $html = '';
         if($this->pagina_siguiente()) {
-            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"?page={$this->pagina_siguiente()}\">Siguiente &raquo;</a>";
+            $url = $this->construir_url($this->pagina_siguiente());
+            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"{$url}\">Siguiente &raquo;</a>";
         }
         return $html;
     }
@@ -56,13 +58,20 @@ class Paginacion {
         for($i = 1; $i <= $this->total_paginas() ; $i++) {
 
             if($i === $this->pagina_actual) {
-                $html .= "<span class=\"paginacion__enlace paginacion__enlace--actual\">${i}</span>";
+                $html .= "<span class=\"paginacion__enlace paginacion__enlace--actual\">{$i}</span>";
             } else {
-                $html .= "<a class=\"paginacion__enlace paginacion__enlace--numeros\" href=\"?page={$i}\">{$i}</a>";
+                $url = $this->construir_url($i);
+                $html .= "<a class=\"paginacion__enlace paginacion__enlace--numeros\" href=\"{$url}\">{$i}</a>";
             }
         }
-        
+
         return $html;
+    }
+
+    private function construir_url($pagina) {
+        $params = $_GET;
+        $params['page'] = $pagina;
+        return '?' . http_build_query($params);
     }
 
     public function paginacion() {

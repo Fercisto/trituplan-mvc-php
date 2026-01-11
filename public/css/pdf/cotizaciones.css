@@ -1,0 +1,353 @@
+@page {
+  margin-top: 18mm;
+  margin-right: 12mm;
+  margin-bottom: 18mm;
+  margin-left: 12mm;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: #0f172a; /* slate-900 */
+  margin: 0;
+  padding: 0;
+}
+
+.container { width: 100%; }
+
+.header-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 14pt;
+  padding-bottom: 10pt;
+}
+
+.header-table td {
+  vertical-align: middle;
+  padding: 0;
+}
+
+.logo {
+  max-width: 190px;
+  max-height: 90px;
+  height: auto;
+}
+
+.company-info {
+  margin-top: 6pt;
+  font-size: 9pt;
+  color: #334155; /* slate-700 */
+  line-height: 1.25;
+}
+
+.document-title {
+  font-size: 22pt;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: 0.4pt;
+  margin-bottom: 2pt;
+}
+
+.document-date,
+.document-number {
+  font-size: 10pt;
+  color: #334155;
+  margin: 0;
+}
+
+.client-section {
+  margin: 0 0 14pt 0;
+  background-color: #f1f5f9;     
+  padding: 12pt 12pt;
+  border-left: 3pt solid #2563eb;
+  page-break-inside: avoid;
+}
+
+.client-label {
+  font-size: 8.8pt;
+  color: #334155;
+  text-transform: uppercase;
+  letter-spacing: 0.9pt;
+  margin-bottom: 3pt;
+  font-weight: 800;
+}
+
+.client-name {
+  font-size: 12.5pt;
+  font-weight: 900;
+  color: #0f172a;
+}
+ 
+.section-title {
+  font-size: 11.2pt;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0 0 8pt 0;
+  padding-bottom: 6pt;
+  border-bottom: 1pt solid #dbe4ee;
+  letter-spacing: 0.2pt;
+}
+
+.products-section {
+  margin-bottom: 10pt;
+  page-break-inside: avoid;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12pt;
+  page-break-inside: avoid;
+}
+
+.products-table thead tr {
+  background-color: #0f172a; 
+}
+
+.products-table thead th {
+  padding: 9pt 8pt;
+  text-align: left;
+  font-size: 9.2pt;
+  font-weight: 900;
+  border: none;
+  color: #ffffff !important;
+  letter-spacing: 0.35pt;
+}
+
+.products-table th.col-qty   { text-align: center; width: 10%; }
+.products-table th.col-price { text-align: right;  width: 16%; }
+.products-table th.col-total { text-align: right;  width: 16%; }
+
+.products-table tbody tr { border-bottom: 1pt solid #e6edf6; }
+.products-table tbody tr:last-child { border-bottom: 2pt solid #dbe4ee; }
+
+.products-table td {
+  padding: 8.5pt 8pt;
+  font-size: 9.8pt;
+  color: #0f172a;
+}
+
+.products-table td.col-qty { text-align: center; }
+
+.products-table td.col-price,
+.products-table td.col-total {
+  text-align: right;
+  font-weight: 900;
+  color: #0b1220;
+}
+
+.products-table tbody tr:nth-child(even) {
+  background-color: #fafcff;
+}
+
+.totals-section {
+  width: 100%;
+  margin: 0 0 12pt 0;
+  page-break-inside: avoid;
+}
+
+.totals-wrapper {
+  width: 320pt;
+  margin-left: auto;
+}
+
+.totals-card {
+  background-color: #f8fafc; 
+  border: 1pt solid #dbe4ee;
+  border-radius: 3pt;
+  padding: 8pt;
+  page-break-inside: avoid;
+}
+
+.totals-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.totals-table tr {
+  border-bottom: 1pt solid #e6edf6;
+}
+
+.totals-table td {
+  padding: 9pt 10pt;
+  font-size: 11.3pt;
+}
+
+.totals-table td.label {
+  text-align: right;
+  color: #0f172a;  
+  font-weight: 900;
+  width: 60%;
+}
+
+.totals-table td.value {
+  text-align: right;
+  font-weight: 900;
+  color: #0f172a;
+  width: 40%;
+}
+
+.totals-table tr.total-row {
+  background-color: #0f172a;
+  border: none;
+}
+
+.totals-table tr.total-row td,
+.totals-table tr.total-row td.label,
+.totals-table tr.total-row td.value {
+  color: #ffffff !important;
+}
+
+.totals-table tr.total-row td {
+  padding: 14pt 10pt;
+  font-size: 16.5pt;
+  font-weight: 900;
+  letter-spacing: 0.35pt;
+}
+
+.conditions-section {
+  margin-bottom: 12pt;
+  padding: 12pt;
+  background-color: #f1f5f9;
+  border: 1pt solid #dbe4ee;
+  border-radius: 3pt;
+  page-break-inside: avoid;
+}
+
+.conditions-title {
+  font-size: 11.2pt;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 10pt;
+}
+
+.conditions-amount {
+  text-align: center;
+  margin-bottom: 10pt;
+  padding: 12pt;
+  background-color: #ffffff;
+  border: 1pt solid #dbe4ee;
+  border-radius: 3pt;
+}
+
+.conditions-amount-number {
+  font-size: 18pt;
+  font-weight: 900;
+  color: #0f172a; 
+  margin-bottom: 3pt;
+}
+
+.conditions-amount-words {
+  font-size: 9.2pt;
+  color: #334155;
+  font-style: italic;
+}
+
+.conditions-list {
+  margin: 0 0 0 18pt;
+  padding: 0;
+  font-size: 9.8pt;
+  line-height: 1.6;
+  color: #0f172a;
+}
+
+.conditions-list li { margin-bottom: 4pt; }
+
+.footer-section {
+  margin-top: 10pt;
+  padding-top: 12pt;
+  border-top: 1pt solid #dbe4ee;
+  page-break-before: avoid;
+  page-break-inside: avoid;
+}
+
+.signature-box {
+  width: 340pt;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signature-title {
+  font-size: 9.2pt;
+  color: #334155;
+  text-transform: uppercase;
+  letter-spacing: 1pt;
+  margin-bottom: 4pt;
+  font-weight: 900;
+}
+
+.signature-name {
+  font-size: 12pt;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.banking-section {
+  margin-top: 16pt;
+  padding: 14pt;
+  background-color: #f8fafc; 
+  border: 1pt solid #cbd5e1; 
+  border-radius: 3pt;
+  page-break-inside: avoid;
+}
+
+.banking-title {
+  font-size: 11.5pt;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 12pt;
+  padding-bottom: 6pt;
+  border-bottom: 1pt solid #cbd5e1;
+  letter-spacing: 0.3pt;
+  text-transform: uppercase;
+}
+
+.bank-info {
+  margin-bottom: 12pt;
+  padding: 10pt;
+  background-color: #ffffff;
+  border-left: 3pt solid #2563eb;
+  border-radius: 2pt;
+}
+
+.bank-info:last-child {
+  margin-bottom: 0;
+}
+
+.bank-name {
+  font-size: 11pt;
+  font-weight: 900;
+  color: #1e293b; 
+  margin-bottom: 8pt;
+  text-decoration: underline;
+}
+
+.bank-details {
+  font-size: 9.5pt;
+  line-height: 1.5;
+  color: #334155; 
+}
+
+.bank-details p {
+  margin: 3pt 0;
+}
+
+.bank-label {
+  font-weight: 900;
+  color: #0f172a;
+  display: inline-block;
+  min-width: 160pt;
+}
+
+.bank-value {
+  color: #1e293b;
+}
+
+.avoid-break { page-break-inside: avoid; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.mb-10 { margin-bottom: 10pt; }
+.mb-20 { margin-bottom: 20pt; }

@@ -5,7 +5,7 @@
     <div class="admin__contenedor">
 
         <?php
-            $seccionActiva = 'proyectos';
+            $seccionActiva = 'cotizaciones';
             include __DIR__ . '/../components/sidebar.php';
         ?>
 
@@ -13,14 +13,14 @@
         <div class="admin__contenido">
             <div class="admin-crud">
 
-                <h3 class="admin-crud__heading">Actualizar Proyecto</h3>
+                <h3 class="admin-crud__heading">Actualizar Cotización</h3>
 
                 <?php require_once __DIR__ . '/../../templates/alertas.php'; ?>
 
-                <form class="formulario" method="POST" enctype="multipart/form-data">
+                <form id="formulario-cotizacion" class="formulario" method="POST">
 
                     <?php include __DIR__ . '/formulario.php' ;?>
-                    <input type="submit" class="formulario__submit" value="Actualizar Proyecto">
+                    <input type="submit" class="formulario__submit" value="Actualizar Cotización">
 
                 </form>
 

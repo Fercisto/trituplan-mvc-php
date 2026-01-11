@@ -1,0 +1,225 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.wizard {
+    margin-bottom: 3rem;
+
+    &__steps {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        margin-bottom: 3rem;
+
+        // Barra de fondo (gris)
+        &::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #e2e8f0;
+            z-index: 0;
+        }
+
+        // Barra de progreso (azul)
+        &::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            left: 0;
+            height: 2px;
+            background-color: v.$azul;
+            z-index: 0;
+            transition: width 0.3s ease;
+        }
+
+        &[data-progress="1"]::after {
+            width: 0%;
+        }
+
+        &[data-progress="2"]::after {
+            width: 50%;
+        }
+
+        &[data-progress="3"]::after {
+            width: 100%;
+        }
+
+        @include m.telefono {
+            flex-direction: column;
+            gap: 2rem;
+
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    &__step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        flex: 1;
+        position: relative;
+        z-index: 1;
+        cursor: default;
+
+        &-number {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        &-title {
+            font-size: 1.4rem;
+            color: #64748b;
+            font-weight: 500;
+            text-align: center;
+            transition: color 0.3s ease;
+
+            @include m.telefono {
+                font-size: 1.2rem;
+            }
+        }
+
+        &--active {
+            .wizard__step-number {
+                background-color: v.$azul;
+                color: v.$blanco;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            }
+
+            .wizard__step-title {
+                color: v.$azul;
+                font-weight: 700;
+            }
+        }
+
+        &--completed {
+            .wizard__step-number {
+                background-color: v.$azul;
+                color: v.$blanco;
+            }
+
+            .wizard__step-title {
+                color: v.$azul;
+            }
+        }
+    }
+
+    &__navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e2e8f0;
+
+        @include m.telefono {
+            flex-direction: column-reverse;
+        }
+    }
+
+    &__button {
+        padding: 1.2rem 3rem;
+        border-radius: 0.5rem;
+        font-weight: 700;
+        font-size: 1.6rem;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        transition: background-color 0.3s ease;
+        margin-bottom: 2rem;
+
+        &--primary {
+            background-color: v.$azul;
+            color: v.$blanco;
+
+            &:hover {
+                background-color: darken(v.$azul, 10%);
+            }
+        }
+
+        &--secondary {
+            background-color: v.$gris;
+            color: v.$blanco;
+
+            &:hover {
+                background-color: darken(v.$gris, 10%);
+            }
+        }
+
+        @include m.telefono {
+            width: 100%;
+            justify-content: center;
+        }
+
+    }
+}
+
+// Tabla de items en el formulario (responsive)
+.formulario__fieldset {
+    .admin__tabla {
+        @include m.telefono {
+            // Mantener como tabla normal en el formulario
+            display: table;
+            font-size: 1.2rem;
+
+            thead {
+                display: table-header-group;
+                font-size: 1.2rem;
+
+                th {
+                    padding: 1rem 0.5rem;
+                    font-size: 1.2rem;
+                }
+            }
+
+            tbody {
+                display: table-row-group;
+            }
+
+            tr {
+                display: table-row;
+                margin-bottom: 0;
+                padding: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            td {
+                display: table-cell;
+                text-align: center !important;
+                padding: 1rem 0.5rem !important;
+                font-size: 1.2rem;
+
+                &::before {
+                    display: none;
+                }
+
+                &.admin__tabla--acciones {
+                    display: table-cell;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    padding: 0.5rem !important;
+                    margin-top: 0;
+                    border-top: none;
+                }
+            }
+        }
+    }
+}

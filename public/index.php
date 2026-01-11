@@ -9,6 +9,7 @@ use Controllers\MensajeController;
 use Controllers\PaginasController;
 use Controllers\CatalogoController;
 use Controllers\ProyectoController;
+use Controllers\CotizacionController;
 
 $router = new Router();
 
@@ -28,6 +29,14 @@ $router->post('/admin/proyecto/crear', [ProyectoController::class, 'crear']);
 $router->get('/admin/proyecto/actualizar', [ProyectoController::class, 'actualizar']);
 $router->post('/admin/proyecto/actualizar', [ProyectoController::class, 'actualizar']);
 $router->post('/admin/proyecto/eliminar', [ProyectoController::class, 'eliminar']);
+
+$router->get('/admin/cotizacion/crear', [CotizacionController::class, 'crear']);
+$router->post('/admin/cotizacion/crear', [CotizacionController::class, 'crear']);
+$router->get('/admin/cotizacion/actualizar', [CotizacionController::class, 'actualizar']);
+$router->post('/admin/cotizacion/actualizar', [CotizacionController::class, 'actualizar']);
+$router->post('/admin/cotizacion/eliminar', [CotizacionController::class, 'eliminar']);
+$router->get('/admin/cotizaciones/pdf', [CotizacionController::class, 'pdf']);
+
 
 // Área pública
 $router->get('/', [PaginasController::class, 'index']);

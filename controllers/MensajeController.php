@@ -21,7 +21,7 @@ class MensajeController {
                     $resultado = $mensaje->eliminar();
 
                     if($resultado) {
-                        header('Location: /admin');
+                        header('Location: /admin?seccion=mensajes');
                     }
                 }
             }

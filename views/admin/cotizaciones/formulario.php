@@ -105,7 +105,7 @@
 
     <!-- Tabla de Items Agregados -->
     <fieldset class="formulario__fieldset">
-        <legend class="formulario__legend">Items Agregados</legend>
+        <legend class="formulario__legend">Productos Agregados</legend>
 
         <table class="admin__tabla">
             <thead>

@@ -90,13 +90,13 @@ $totalLetra = $cotizacion->total_letra ?? '';
           <?php foreach ($items as $item): ?>
             <?php
               $descripcion = $item['descripcion'] ?? '';
-              $cantidad    = isset($item['cantidad']) ? (float)$item['cantidad'] : 0;
+              $cantidad    = $item['cantidad'] ?? '';
               $precioU     = isset($item['precioUnitario']) ? (float)$item['precioUnitario'] : 0;
               $importe     = isset($item['precio']) ? (float)$item['precio'] : ($cantidad * $precioU);
             ?>
             <tr>
               <td><?php echo htmlspecialchars($descripcion); ?></td>
-              <td class="col-qty"><?php echo number_format($cantidad, 0); ?></td>
+              <td class="col-qty"><?php echo htmlspecialchars($cantidad); ?></td>
               <td class="col-price">$<?php echo number_format($precioU, 2); ?></td>
               <td class="col-total">$<?php echo number_format($importe, 2); ?></td>
             </tr>

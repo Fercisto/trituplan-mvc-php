@@ -35,7 +35,7 @@ class AuthController {
                         $_SESSION['id'] = $usuario->id;
                         $_SESSION['email'] = $usuario->email;
                         $_SESSION['login'] = true;
-                        header('Location: /admin?seccion=proyectos&page=1');
+                        header('Location: /admin?seccion=cotizaciones&page=1');
                         exit();
                     } else {
                         Usuario::setAlerta('error', 'Password Incorrecto');

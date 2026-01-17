@@ -12,7 +12,7 @@ class AuthController {
         $inciado = $_SESSION['email'] ?? '';
         
         if($_SERVER['PATH_INFO'] === '/login' && $inciado) {
-            header('Location: /admin?seccion=proyectos&page=1');
+            header('Location: /admin?seccion=cotizaciones&page=1');
             exit();
         }
 

@@ -206,12 +206,12 @@
         }
 
         tbody tr {
-            &:nth-child(odd) {
-                background-color: v.$gris-claro;
+            &:nth-child(even) {
+                background-color: v.$gris-tablas;
             }
 
-            &:nth-child(even) {
-                background-color: v.$blanco;
+            &:hover {
+                background-color: v.$gris-tablas;
             }
         }
 

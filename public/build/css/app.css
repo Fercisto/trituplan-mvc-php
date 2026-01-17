@@ -1586,11 +1586,11 @@ h3 {
   color: #FFFFFF;
   padding: 2rem;
 }
-.admin__tabla tbody tr:nth-child(odd) {
-  background-color: #F8FAFC;
-}
 .admin__tabla tbody tr:nth-child(even) {
-  background-color: #FFFFFF;
+  background-color: #f2f2f2;
+}
+.admin__tabla tbody tr:hover {
+  background-color: #f2f2f2;
 }
 .admin__tabla--imagen {
   width: 10rem;

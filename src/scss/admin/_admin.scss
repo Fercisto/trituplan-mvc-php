@@ -175,7 +175,7 @@
     &__tabla {
         margin-top: 2rem;
         width: 100%;
-        border-spacing: 0;
+        border-collapse: collapse;
 
         // Hacer tabla responsive en móviles con scroll horizontal
         @include m.telefono {
@@ -205,9 +205,13 @@
             }
         }
 
-        tr {
-            &:nth-of-type(odd):not(thead tr) {
+        tbody tr {
+            &:nth-child(odd) {
                 background-color: v.$gris-claro;
+            }
+
+            &:nth-child(even) {
+                background-color: v.$blanco;
             }
         }
 
@@ -222,32 +226,30 @@
         }
 
         &--descripcion {
-            max-width: 100px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+            max-width: 200px;
+        }
+
+        td, th {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            vertical-align: middle;
         }
 
         td {
-            text-align: center;
-            padding: 1.5rem 1rem;
+            border-top: 1px solid #e2e8f0;
         }
 
         &--acciones {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            align-items: center;
-            padding: 1.5rem 1rem;
             min-width: 15rem;
-
-            @include m.tablet {
-                gap: 1rem;
-            }
+            vertical-align: middle;
 
             @include m.telefono {
-                gap: 0.5rem;
                 min-width: 12rem;
+            }
+
+            a, button, form {
+                display: block;
+                margin: 0.4rem auto;
             }
         }
 

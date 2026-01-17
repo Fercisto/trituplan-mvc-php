@@ -1560,7 +1560,7 @@ h3 {
 .admin__tabla {
   margin-top: 2rem;
   width: 100%;
-  border-spacing: 0;
+  border-collapse: collapse;
 }
 @media (max-width: 768px) {
   .admin__tabla {
@@ -1586,8 +1586,11 @@ h3 {
   color: #FFFFFF;
   padding: 2rem;
 }
-.admin__tabla tr:nth-of-type(odd):not(thead tr) {
+.admin__tabla tbody tr:nth-child(odd) {
   background-color: #F8FAFC;
+}
+.admin__tabla tbody tr:nth-child(even) {
+  background-color: #FFFFFF;
 }
 .admin__tabla--imagen {
   width: 10rem;
@@ -1600,33 +1603,28 @@ h3 {
   }
 }
 .admin__tabla--descripcion {
-  max-width: 100px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  max-width: 200px;
 }
-.admin__tabla td {
+.admin__tabla td, .admin__tabla th {
   text-align: center;
   padding: 1.5rem 1rem;
+  vertical-align: middle;
+}
+.admin__tabla td {
+  border-top: 1px solid #e2e8f0;
 }
 .admin__tabla--acciones {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  align-items: center;
-  padding: 1.5rem 1rem;
   min-width: 15rem;
-}
-@media (min-width: 768px) {
-  .admin__tabla--acciones {
-    gap: 1rem;
-  }
+  vertical-align: middle;
 }
 @media (max-width: 768px) {
   .admin__tabla--acciones {
-    gap: 0.5rem;
     min-width: 12rem;
   }
+}
+.admin__tabla--acciones a, .admin__tabla--acciones button, .admin__tabla--acciones form {
+  display: block;
+  margin: 0.4rem auto;
 }
 .admin__tabla--enlace {
   margin: 0;

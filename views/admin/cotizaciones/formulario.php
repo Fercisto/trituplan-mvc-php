@@ -180,41 +180,57 @@
     <fieldset class="formulario__fieldset">
         <legend class="formulario__legend">Condiciones Generales</legend>
 
-        <div class="formulario__campo">
-            <label for="condicion_1" class="formulario__label">Condición 1</label>
-            <input
-                type="text"
-                class="formulario__input"
-                id="condicion_1"
-                name="condicion_1"
-                placeholder="Ej: Se requiere el 100% para formalizar el pedido"
-                value="Se requiere el 100% para formalizar el pedido"
-            >
+        <div id="condiciones-container">
+            <div class="formulario__campo formulario__campo--condicion" data-condicion="1">
+                <label class="formulario__label">Condición 1</label>
+                <div class="formulario__campo--con-boton">
+                    <input
+                        type="text"
+                        class="formulario__input condicion-input"
+                        placeholder="Ej: Se requiere el 100% para formalizar el pedido"
+                        value="Se requiere el 100% para formalizar el pedido"
+                    >
+                    <button type="button" class="btn-eliminar-condicion" title="Eliminar condición">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="formulario__campo formulario__campo--condicion" data-condicion="2">
+                <label class="formulario__label">Condición 2</label>
+                <div class="formulario__campo--con-boton">
+                    <input
+                        type="text"
+                        class="formulario__input condicion-input"
+                        placeholder="Ej: Entrega 7 días después de formalizar la compra"
+                        value="Entrega 7 días después de formalizar la compra"
+                    >
+                    <button type="button" class="btn-eliminar-condicion" title="Eliminar condición">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="formulario__campo formulario__campo--condicion" data-condicion="3">
+                <label class="formulario__label">Condición 3</label>
+                <div class="formulario__campo--con-boton">
+                    <input
+                        type="text"
+                        class="formulario__input condicion-input"
+                        placeholder="Ej: Transporte y viáticos a cargo del cliente"
+                        value="Transporte y viáticos a cargo del cliente"
+                    >
+                    <button type="button" class="btn-eliminar-condicion" title="Eliminar condición">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <div class="formulario__campo">
-            <label for="condicion_2" class="formulario__label">Condición 2</label>
-            <input
-                type="text"
-                class="formulario__input"
-                id="condicion_2"
-                name="condicion_2"
-                placeholder="Ej: Entrega 7 días después de formalizar la compra"
-                value="Entrega 7 días después de formalizar la compra"
-            >
-        </div>
-
-        <div class="formulario__campo">
-            <label for="condicion_3" class="formulario__label">Condición 3</label>
-            <input
-                type="text"
-                class="formulario__input"
-                id="condicion_3"
-                name="condicion_3"
-                placeholder="Ej: Transporte y viáticos a cargo del cliente"
-                value="Transporte y viáticos a cargo del cliente"
-            >
-        </div>
+        <button type="button" class="admin__button admin__button--secundario" id="btn-agregar-condicion">
+            <i class="fa-solid fa-plus"></i>
+            Agregar Condición
+        </button>
     </fieldset>
 </div>
 
@@ -239,23 +255,9 @@
 <!-- Pasar items y condiciones de PHP a JavaScript (para modo edición) -->
 <script>
     window.itemsIniciales = <?= json_encode($items ?? []) ?>;
-
-    // Cargar condiciones en modo edición
-    <?php if (isset($cotizacion) && $cotizacion->condiciones_generales): ?>
-        const condicionesGuardadas = <?= json_encode(json_decode($cotizacion->condiciones_generales, true) ?? []) ?>;
-
-        document.addEventListener('DOMContentLoaded', () => {
-            if (condicionesGuardadas.length > 0) {
-                if (condicionesGuardadas[0]) {
-                    document.querySelector('#condicion_1').value = condicionesGuardadas[0];
-                }
-                if (condicionesGuardadas[1]) {
-                    document.querySelector('#condicion_2').value = condicionesGuardadas[1];
-                }
-                if (condicionesGuardadas[2]) {
-                    document.querySelector('#condicion_3').value = condicionesGuardadas[2];
-                }
-            }
-        });
-    <?php endif; ?>
+    window.condicionesIniciales = <?= json_encode(
+        isset($cotizacion) && $cotizacion->condiciones_generales
+            ? json_decode($cotizacion->condiciones_generales, true)
+            : null
+    ) ?>;
 </script>

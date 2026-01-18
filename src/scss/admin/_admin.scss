@@ -79,6 +79,14 @@
         &--full {
             width: 100%;
         }
+
+        &--secundario {
+            background-color: v.$gris;
+
+            &:hover {
+                background-color: darken(v.$gris, 10%);
+            }
+        }
     }
 
     &__contenido {
@@ -329,4 +337,26 @@
 
     }
 
+}
+
+// Botón eliminar condición
+.btn-eliminar-condicion {
+    background-color: v.$rojo;
+    color: v.$blanco;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        background-color: darken(v.$rojo, 10%);
+    }
 }

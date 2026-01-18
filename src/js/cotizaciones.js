@@ -553,22 +553,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Guardar items limpios en el campo oculto
         document.querySelector('#items-json').value = JSON.stringify(itemsLimpios);
 
-        // Recopilar las condiciones generales
-        const condicion1 = document.querySelector('#condicion_1');
-        const condicion2 = document.querySelector('#condicion_2');
-        const condicion3 = document.querySelector('#condicion_3');
-
+        // Recopilar las condiciones generales dinámicamente
+        const condicionesInputs = document.querySelectorAll('.condicion-input');
         const condiciones = [];
 
-        if (condicion1 && condicion1.value.trim()) {
-            condiciones.push(condicion1.value.trim());
-        }
-        if (condicion2 && condicion2.value.trim()) {
-            condiciones.push(condicion2.value.trim());
-        }
-        if (condicion3 && condicion3.value.trim()) {
-            condiciones.push(condicion3.value.trim());
-        }
+        condicionesInputs.forEach(input => {
+            if (input.value.trim()) {
+                condiciones.push(input.value.trim());
+            }
+        });
 
         // Guardar condiciones como JSON en campo oculto
         const condicionesInput = document.querySelector('#condiciones-json');
@@ -592,5 +585,102 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar wizard
     mostrarPaso(1);
+
+    // Manejo de Condiciones Dinámicas
+    const condicionesContainer = document.querySelector('#condiciones-container');
+    const btnAgregarCondicion = document.querySelector('#btn-agregar-condicion');
+
+    if (btnAgregarCondicion && condicionesContainer) {
+        // Cargar condiciones iniciales (modo edición)
+        cargarCondicionesIniciales();
+
+        // Agregar nueva condición
+        btnAgregarCondicion.addEventListener('click', agregarCondicion);
+
+        // Delegación de eventos para eliminar condiciones
+        condicionesContainer.addEventListener('click', (e) => {
+            if (e.target.closest('.btn-eliminar-condicion')) {
+                const campo = e.target.closest('.formulario__campo--condicion');
+                if (campo) {
+                    eliminarCondicion(campo);
+                }
+            }
+        });
+    }
+
+    function cargarCondicionesIniciales() {
+        if (window.condicionesIniciales && window.condicionesIniciales.length > 0) {
+            // Limpiar condiciones por defecto
+            condicionesContainer.innerHTML = '';
+
+            // Crear condiciones desde los datos guardados
+            window.condicionesIniciales.forEach((condicion, index) => {
+                crearCampoCondicion(index + 1, condicion);
+            });
+        }
+        actualizarNumerosCondiciones();
+    }
+
+    function agregarCondicion() {
+        const condicionesActuales = condicionesContainer.querySelectorAll('.formulario__campo--condicion');
+        const nuevoNumero = condicionesActuales.length + 1;
+
+        crearCampoCondicion(nuevoNumero, '');
+
+        // Hacer scroll al nuevo campo
+        const nuevoCampo = condicionesContainer.lastElementChild;
+        nuevoCampo.querySelector('input').focus();
+    }
+
+    function crearCampoCondicion(numero, valor) {
+        const campo = document.createElement('div');
+        campo.classList.add('formulario__campo', 'formulario__campo--condicion');
+        campo.setAttribute('data-condicion', numero);
+
+        campo.innerHTML = `
+            <label class="formulario__label">Condición ${numero}</label>
+            <div class="formulario__campo--con-boton">
+                <input
+                    type="text"
+                    class="formulario__input condicion-input"
+                    placeholder="Escribe una condición..."
+                    value="${escapeHtml(valor)}"
+                >
+                <button type="button" class="btn-eliminar-condicion" title="Eliminar condición">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        `;
+
+        condicionesContainer.appendChild(campo);
+    }
+
+    function eliminarCondicion(campo) {
+        const condicionesActuales = condicionesContainer.querySelectorAll('.formulario__campo--condicion');
+
+        // No permitir eliminar si solo queda una condición
+        if (condicionesActuales.length <= 1) {
+            mostrarAlerta('error', 'Debe haber al menos una condición');
+            return;
+        }
+
+        campo.remove();
+        actualizarNumerosCondiciones();
+    }
+
+    function actualizarNumerosCondiciones() {
+        const condiciones = condicionesContainer.querySelectorAll('.formulario__campo--condicion');
+        condiciones.forEach((campo, index) => {
+            const numero = index + 1;
+            campo.setAttribute('data-condicion', numero);
+            campo.querySelector('.formulario__label').textContent = `Condición ${numero}`;
+        });
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
 
 });

@@ -78,6 +78,16 @@
         gap: 2rem;
     }
 
+    &__campo--con-boton {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+        .formulario__input {
+            flex: 1;
+        }
+    }
+
     &__submit {
         @include m.boton(v.$azul, v.$blanco);
         width: auto;

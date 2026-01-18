@@ -408,6 +408,14 @@ h3 {
   display: flex;
   gap: 2rem;
 }
+.formulario__campo--con-boton {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.formulario__campo--con-boton .formulario__input, .formulario__campo--con-boton .formulario__input--sociales, .formulario__campo--con-boton .formulario__select--sociales {
+  flex: 1;
+}
 .formulario__submit {
   background-color: #0180FF;
   padding: 1.5rem 4rem;
@@ -1471,6 +1479,12 @@ h3 {
 .admin__button--full {
   width: 100%;
 }
+.admin__button--secundario {
+  background-color: #1d252f;
+}
+.admin__button--secundario:hover {
+  background-color: #0a0c0f;
+}
 .admin__contenido {
   flex: 1;
 }
@@ -1685,6 +1699,25 @@ h3 {
 }
 .admin-crud textarea {
   resize: none;
+}
+
+.btn-eliminar-condicion {
+  background-color: rgb(169, 0, 0);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-eliminar-condicion i {
+  font-size: 1.6rem;
+}
+.btn-eliminar-condicion:hover {
+  background-color: #760000;
 }
 
 .paginacion {

@@ -109,11 +109,13 @@
 
         <table class="admin__tabla">
             <thead>
-                <th class="admin__tabla--encabezado">Descripción</th>
-                <th class="admin__tabla--encabezado">Cantidad</th>
-                <th class="admin__tabla--encabezado">P/U</th>
-                <th class="admin__tabla--encabezado">Precio</th>
-                <th class="admin__tabla--encabezado">Acciones</th>
+                <tr>
+                    <th class="admin__tabla--encabezado">Descripción</th>
+                    <th class="admin__tabla--encabezado">Cantidad</th>
+                    <th class="admin__tabla--encabezado">P/U</th>
+                    <th class="admin__tabla--encabezado">Precio</th>
+                    <th class="admin__tabla--encabezado">Acciones</th>
+                </tr>
             </thead>
             <tbody id="items-tabla">
                 <!-- Los items se renderizan con JavaScript -->

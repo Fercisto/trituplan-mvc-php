@@ -276,9 +276,10 @@
             }
 
             @include m.telefono {
-                padding: 0.6rem 1rem;
-                font-size: 1.2rem;
-                width: 10rem;
+                padding: 0.6rem 0.8rem;
+                font-size: 1.1rem;
+                width: auto;
+                min-width: 8rem;
 
                 i {
                     font-size: 1.2rem;

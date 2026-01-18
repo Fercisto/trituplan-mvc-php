@@ -311,15 +311,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const tableRow = document.createElement('TR');
 
             const descripcionTableDate = document.createElement('TD');
+            descripcionTableDate.setAttribute('data-label', 'Descripción:');
             descripcionTableDate.textContent = item.descripcion;
 
             const cantidadTableData = document.createElement('TD');
+            cantidadTableData.setAttribute('data-label', 'Cantidad:');
             cantidadTableData.textContent = item.cantidad;
 
             const precioUnitarioTableData = document.createElement('TD');
+            precioUnitarioTableData.setAttribute('data-label', 'P/U:');
             precioUnitarioTableData.textContent = '$' + item.precioUnitario.toFixed(2);
 
             const precioTotalTableData = document.createElement('TD');
+            precioTotalTableData.setAttribute('data-label', 'Precio:');
             precioTotalTableData.textContent = '$' + item.precio.toFixed(2);
 
             const btnActualizar = document.createElement('BUTTON');

@@ -95,7 +95,7 @@ $totalLetra = $cotizacion->total_letra ?? '';
               $importe     = isset($item['precio']) ? (float)$item['precio'] : ($cantidad * $precioU);
             ?>
             <tr>
-              <td><?php echo htmlspecialchars($descripcion); ?></td>
+              <td><?php echo nl2br(htmlspecialchars($descripcion)); ?></td>
               <td class="col-qty"><?php echo htmlspecialchars($cantidad); ?></td>
               <td class="col-price">$<?php echo number_format($precioU, 2); ?></td>
               <td class="col-total">$<?php echo number_format($importe, 2); ?></td>

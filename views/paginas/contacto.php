@@ -1,6 +1,6 @@
 <main class="contacto">
 
-    <h2 class="contacto__heading">¡Ponte en contacto con trituplan!</h2>
+    <h2 class="contacto__heading">¡Ponte en contacto con Trituplan!</h2>
     
     <form action="" method="POST" class="formulario formulario--contacto">
 

@@ -1,6 +1,6 @@
 <main class="admin">
 
-    <h2 class="admin__heading"><?php echo $titulo; ?> trituplan</h2>
+    <h2 class="admin__heading"><?php echo $titulo; ?> Trituplan</h2>
 
     <div class="admin__contenedor">
 
@@ -132,7 +132,7 @@
                                         </a>
 
                                         <a href="admin/cotizacion/actualizar?id=<?php echo s($cotizacion->id); ?>" class="admin__tabla--enlace admin__tabla--enlace-actualizar">
-                                            <i class="fa-solid fa-pen-to-square"></i> Editar
+                                            <i class="fa-solid fa-pen-to-square"></i> Actualizar
                                         </a>
 
                                         <form method="POST" class="w100" action="/admin/cotizacion/eliminar">

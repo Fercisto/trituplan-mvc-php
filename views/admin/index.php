@@ -1,6 +1,6 @@
 <main class="admin">
 
-    <h2 class="admin__heading"><?php echo $titulo; ?> trituplan</h2>
+    <h2 class="admin__heading"><?php echo $titulo; ?> Trituplan</h2>
 
     <div class="admin__contenedor">
 
